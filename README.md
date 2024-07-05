@@ -1,4 +1,5 @@
-You can use this code for laminata with 20 or under than lamina with same thickness
+You can use this code for laminata with 20 or less than lamina with same thickness
+
 !  please pay attention to the following 9 steps
 1) you can use exist material or add new material from line 24 like example
 2) please enter the lamina thickness in line 30
