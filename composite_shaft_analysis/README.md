@@ -1,15 +1,85 @@
-You can use this code for laminata with 20 or less than lamina with same thickness
+# ⚙️ Composite Shaft Analysis using CLT & Tsai-Wu
 
-!  please pay attention to the following 9 steps
-1) you can use exist material or add new material from line 24 like example
-2) please enter the lamina thickness in line 30
-3) please enter the laminate code like matrix
-   example:if laminate code is [0/30/45] ---> laminate_code=[0 30 45]
-4) In Tsai-Wu we need to understand wich lamina we are analys and need to define this lamina material
-5) "z" is position of lamina that we want to analys
-   example: in 9 layer lamina with 0.0025m thickness lamina the position of top surface in first lamina is -0.01125 so ---> z=-0.01125
-6) In Tsai-Wu we need to understand wich lamina we are analys and need to define this lamina number to define angle of this lamina
-7) for designing shaft we need to output radius of shaft in line 35
-8) from line 42 to line 49 please enter the force, moment and torsion
-9) from line 52 to line 71 please enter each lamina material
-   example: material_l1=graphite_epoxy
+This folder contains a self-contained MATLAB script for analyzing laminated composite shafts using **Classical Lamination Theory (CLT)** and the **Tsai-Wu failure criterion**.
+
+---
+
+## 🧾 Overview
+
+Using this code, you can:
+- Analyze a laminate with **up to 20 plies** of **equal thickness**
+- Define custom materials and stacking sequences
+- Compute:
+  - Global stiffness matrices \( A \), \( B \), and \( D \)
+  - On-axis and off-axis stresses and strains
+  - Safety ratio based on Tsai-Wu criterion
+- Design composite drive shafts under force, bending moment, and torsion
+
+---
+
+## 📄 File Included
+
+| File                        | Description |
+|-----------------------------|-------------|
+| `composite_shaft_analysis.m` | Main MATLAB script implementing the full analysis process using symbolic and numerical methods |
+
+---
+
+## 🚀 How to Use
+
+Please follow the **9 setup steps** before running the code:
+
+1. **Material Definition**  
+   Use existing materials or define your own at **line 24**, using the provided structure format.
+
+2. **Lamina Thickness**  
+   Enter the lamina thickness (in meters) at **line 30**.
+
+3. **Laminate Code Definition**  
+   Define the stacking sequence as a row vector.  
+   Example: `[0/30/45]` →  
+   ```matlab
+   laminate_code = [0 30 45];
+   ```
+
+4. **Target Lamina Material for Tsai-Wu**  
+   To perform Tsai-Wu failure analysis, specify the material of the lamina you want to analyze.
+
+5. **Z-Position of the Lamina**  
+   Provide the through-thickness position `z` (in meters) for the **surface** of the lamina under evaluation.  
+   Example:  
+   For 9 plies each 0.0025 m thick, the top surface of the 1st ply is at:  
+   ```matlab
+   z = -0.01125;
+   ```
+
+6. **Lamina Number for Tsai-Wu**  
+   Specify which lamina number you're analyzing, to extract the correct orientation angle for failure evaluation.
+
+7. **Shaft Radius**  
+   Define the shaft's outer radius at **line 35**.
+
+8. **Applied Loads**  
+   Enter the axial force, bending moments, and torsional load between **lines 42–49**.
+
+9. **Material Assignment per Ply**  
+   From **lines 52 to 71**, assign materials to each ply individually:  
+   ```matlab
+   material_l1 = graphite_epoxy;
+   material_l2 = graphite_epoxy;
+   ...
+   ```
+
+---
+
+## 📦 Requirements
+
+- MATLAB (R2020 or newer recommended)
+- Symbolic Math Toolbox
+
+---
+
+## 📫 Contact
+
+Created by **Amir Hossein Akbari**  
+📧 ahamech@outlook.com
